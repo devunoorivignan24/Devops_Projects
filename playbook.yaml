@@ -1,0 +1,23 @@
+---
+- name: Basic apache setup
+  hosts: webservers
+  become: yes
+
+  tasks:
+  - name: install apache
+    apt: 
+      name: apache2
+      state: present
+
+  - name: Deploy custom index.html
+    copy:
+      src: /files/index.html
+      dest: /var/www/html/index.html
+      mode: '0644'
+
+  - name: ensure apache is running
+    service:
+      name: apache2
+      state: started
+      enabled: yes
+
