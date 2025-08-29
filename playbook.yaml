@@ -11,7 +11,7 @@
 
   - name: Deploy custom index.html
     copy:
-      src: /files/index.html
+      src: files/index.html
       dest: /var/www/html/index.html
       mode: '0644'
 
